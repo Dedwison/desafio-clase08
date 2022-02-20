@@ -5,6 +5,7 @@ const router = express.Router();
 
 //middlewares
 router.use(express.json);
+router.use(express.urlencoded({ extended: true }));
 
 //Routes
 router.use("/products", productsRoutes);
