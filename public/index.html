@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>desafio clase 08 PB</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Products Form -->
+    <div style="display: flex; flex-direction: column; align-items: center">
+      <div>
+        <h3 style="text-align: center; margin-top: 16px">
+          Agrega un producto!
+        </h3>
+      </div>
+      <form action="/api/products" method="post">
+        <div class="form-group">
+          <label for="title">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Coloque aquí el título del producto"
+          />
+        </div>
+        <div class="form-group">
+          <label for="price">Precio</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            placeholder="Valor del producto"
+          />
+        </div>
+        <div class="form-group">
+          <label for="thumbnail">Thumbnail</label>
+          <input
+            type="text"
+            class="form-control"
+            id="thumbnail"
+            placeholder="Coloque aquí la url o foto del producto"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Cargar producto</button>
+      </form>
+    </div>
+  </body>
+</html>
