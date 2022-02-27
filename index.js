@@ -7,13 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 //Middleware
-app.use(express.static("public"));
-app.use("/api", apiRoutes);
+app.use(express.static(path.resolve(__dirname, "./public")));
 
 //Routes
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public/index.html"));
-});
+app.use("/api", apiRoutes);
 
 const serverConneted = app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);
