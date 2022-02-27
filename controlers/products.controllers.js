@@ -3,20 +3,20 @@ const { ProductsApi } = require("../models/index");
 const productos = new ProductsApi();
 
 const getProductsController = (req, res) => {
-  const { precio, busqueda } = req.query;
+  const { price, busqueda } = req.query;
   let respuestaProductos = productos.getAll();
   if (Object.keys(req.query).length) {
     if (precio) {
-      if (isNaN(+precio)) {
+      if (isNaN(+price)) {
         return res.status(400).send("PrecioMaximo debe ser in número válido");
       }
       respuestaProductos = respuestaProductos.filter(
-        (prod) => prod.precio <= +precio
+        (prod) => prod.price <= +price
       );
     }
     if (busqueda) {
       respuestaProductos = respuestaProductos.filter((prod) =>
-        prod.nombre.toLowerCase().startWith(busqueda.toLowerCase())
+        prod.title.toLowerCase().startWith(busqueda.toLowerCase())
       );
     }
   }

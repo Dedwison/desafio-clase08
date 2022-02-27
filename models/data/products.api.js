@@ -16,10 +16,10 @@ class ProductsApi {
   }
 
   save(product) {
-    const { nombre, descripcion, precio, imagen } = product;
-    if (!nombre || !descripcion || !precio || !imagen)
+    const { title, price, thumbnail } = product;
+    if (!title || !price || !thumbnail)
       return { error: "todos los campos son obligatorios" };
-    if (precio < 0 || isNaN(precio))
+    if (price < 0 || isNaN(price))
       return { error: "Precio debe ser un número entero positivo" };
     const newProduct = {
       ...product,
