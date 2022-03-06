@@ -1,6 +1,13 @@
 class ProductsApi {
   constructor() {
-    this.products = [];
+    this.products = [
+      {
+        id: 1,
+        title: "pantalon",
+        price: 3500,
+        thumbnail: "http://image.jpg",
+      },
+    ];
   }
   static idCount = 0;
 
@@ -49,4 +56,4 @@ class ProductsApi {
   }
 }
 
-module.exports = ProductsApi;
+module.exports = { ProductsApi };

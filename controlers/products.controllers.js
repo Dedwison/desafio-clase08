@@ -1,4 +1,4 @@
-const { ProductsApi } = require("../models/index");
+const { ProductsApi } = require("../models/data/products.api");
 
 const productos = new ProductsApi();
 
