@@ -4,7 +4,7 @@ const productsRoutes = require("./products/products.routes");
 const router = express.Router();
 
 //middlewares
-router.use(express.json);
+router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 //Routes
