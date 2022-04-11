@@ -37,16 +37,14 @@ const saveProductController = (req, res) => {
 };
 
 const updateProductController = (req, res) => {
-  const {
-    params: { productId },
-  } = req;
+  const productId = req.params;
   const productUpdated = productos.updateById(productId, req.body);
   if (productUpdated.error) return res.status(400).send(productUpdated.error);
   return res.json(productUpdated);
 };
 
 const deleteProductController = (req, res) => {
-  const { productId } = req.params;
+  const productId = req.params;
   const productDeleted = productos.deleteById(productId);
   if (productDeleted.error) res.status(400).send(productDeleted.error);
   return res.json(productDeleted);

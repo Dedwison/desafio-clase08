@@ -9,7 +9,7 @@ class ProductsApi {
       },
     ];
   }
-  static idCount = 0;
+  static idCount = 1;
 
   getAll() {
     return [...this.products];
@@ -19,7 +19,12 @@ class ProductsApi {
     const searchedProduct = this.products.find(
       (product) => product.id === +productId
     );
-    return searchedProduct || { error: `Producto con id ${id} no encontrado!` };
+
+    if (!searchedProduct) {
+      return { error: `Producto con id ${productId} no encontrado!` };
+    }
+
+    return searchedProduct;
   }
 
   save(product) {
@@ -37,12 +42,14 @@ class ProductsApi {
   }
 
   updateById(productId, product) {
-    const productIndex = this.products.findIndex(
+    const productIndex = this.products.find(
       (producto) => producto.id === +productId
     );
+    console.log(productIndex);
+    console.log(productId);
     if (productIndex < 0)
       return { error: `Producto con id ${productId} no encontrado!` };
-    this.products[productIndex] = { id: +productId, ...product };
+    this.products[productIndex] = { id: productId, ...product };
     return this.products[productIndex];
   }
 
