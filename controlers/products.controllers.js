@@ -3,23 +3,23 @@ const { ProductsApi } = require("../models/data/products.api");
 const productos = new ProductsApi();
 
 const getProductsController = (req, res) => {
-  const { price, busqueda } = req.query;
+  // const { price, busqueda } = req.query;
   let respuestaProductos = productos.getAll();
-  if (Object.keys(req.query).length) {
-    if (precio) {
-      if (isNaN(+price)) {
-        return res.status(400).send("PrecioMaximo debe ser in número válido");
-      }
-      respuestaProductos = respuestaProductos.filter(
-        (prod) => prod.price <= +price
-      );
-    }
-    if (busqueda) {
-      respuestaProductos = respuestaProductos.filter((prod) =>
-        prod.title.toLowerCase().startWith(busqueda.toLowerCase())
-      );
-    }
-  }
+  // if (Object.keys(req.query).length) {
+  //   if (precio) {
+  //     if (isNaN(+price)) {
+  //       return res.status(400).send("PrecioMaximo debe ser in número válido");
+  //     }
+  //     respuestaProductos = respuestaProductos.filter(
+  //       (prod) => prod.price <= +price
+  //     );
+  //   }
+  //   if (busqueda) {
+  //     respuestaProductos = respuestaProductos.filter((prod) =>
+  //       prod.title.toLowerCase().startWith(busqueda.toLowerCase())
+  //     );
+  //   }
+  // }
   return res.json(respuestaProductos);
 };
 
@@ -37,9 +37,12 @@ const saveProductController = (req, res) => {
 };
 
 const updateProductController = (req, res) => {
-  const { productId } = req.params;
+  const {
+    params: { productId },
+  } = req;
   const productUpdated = productos.updateById(productId, req.body);
   if (productUpdated.error) return res.status(400).send(productUpdated.error);
+  console.log(productId);
   return res.json(productUpdated);
 };
 

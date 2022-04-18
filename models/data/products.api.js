@@ -16,14 +16,13 @@ class ProductsApi {
   }
 
   getById(productId) {
-    const searchedProduct = this.products.findIndex(
+    const searchedProduct = this.products.find(
       (product) => product.id === +productId
     );
 
     if (!searchedProduct) {
       return { error: `Producto con id ${productId} no encontrado!` };
     }
-
     return searchedProduct;
   }
 
@@ -42,11 +41,9 @@ class ProductsApi {
   }
 
   updateById(productId, product) {
-    const productIndex = this.products.find(
+    const productIndex = this.products.findIndex(
       (producto) => producto.id === +productId
     );
-    console.log(productIndex);
-    console.log(+productId);
     if (productIndex < 0)
       return { error: `Producto con id ${productId} no encontrado!` };
     this.products[productIndex] = { id: +productId, ...product };
